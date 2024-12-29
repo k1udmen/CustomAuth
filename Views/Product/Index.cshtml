@@ -1,0 +1,101 @@
+﻿@model List<SimpleInMemoryCRUD.Models.Product>
+
+@{
+    ViewData["Title"] = "Ürün Listesi";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .table-container {
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .table-container h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        .btn-create {
+            margin-bottom: 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 1.1rem;
+        }
+        .btn-create:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="table-container">
+            <h1>@ViewData["Title"]</h1>
+            <a href="/Product/Create" class="btn btn-create">Yeni Ürün Ekle</a>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Miktar</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>@product.Quantity</td>
+                            <td>
+                                <a href="/Product/Edit/@product.Id" class="btn btn-warning btn-sm">Düzenle</a>
+                                <a href="/Product/Delete/@product.Id" class="btn btn-danger btn-sm">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+    </div>
+</body>
+</html>

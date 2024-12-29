@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CustomAuth.Entities.UserAccount>
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h1 class="text-center my-4">Kullanıcılar</h1>
+
+<div class="container">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    table {
+        width: 100%;
+        margin-top: 20px;
+    }
+    th, td {
+        text-align: center;
+        vertical-align: middle;
+    }
+    h1 {
+        color: #007bff;
+        font-weight: bold;
+    }
+    .table th, .table td {
+        padding: 15px;
+    }
+    .table-striped tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
